@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/collapsing_toolbar_height"
+            app:contentScrim="@color/primary"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <ImageView
+                android:id="@+id/iv_talks_scroll_detail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fitsSystemWindows="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_talks" />
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:title=""
+                android:theme="@style/AppTheme.PopupOverlay"
+                app:layout_collapseMode="pin" />
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <RelativeLayout
+            android:id="@+id/rl_talks_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/margin_medium_2">
+
+            <TextView
+                android:id="@+id/tv_talker_detail_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Talks at Google"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/tv_talks_details_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_talker_detail_name"
+                android:text="Cast from HBO's Silicon Valley with Talks"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular" />
+
+            <LinearLayout
+                android:id="@+id/ll_talks_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tv_talks_details_description"
+                android:layout_marginTop="@dimen/margin_small"
+                android:clickable="true"
+                android:foreground="@drawable/ripple"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/detail_margin_small">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/margin_medium_2"
+                    android:text="10:35"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_regular" />
+
+                <ImageView
+                    android:id="@+id/iv_detail_listen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/detail_margin_small"
+                    android:src="@drawable/ic_volume_gray_24dp"
+                    android:tint="@color/secondary_text" />
+
+                <TextView
+                    android:id="@+id/tv_detail_listen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/detail_margin_small"
+                    android:text="Listen"
+                    android:textColor="@color/secondary_text"
+                    android:textSize="@dimen/text_regular" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/btn_add_to_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ll_talks_detail"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:src="@drawable/ic_playlist_add_black_24dp" />
+
+            <ImageView
+                android:id="@+id/btn_favourite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/btn_add_to_list"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_toRightOf="@+id/btn_add_to_list"
+                android:src="@drawable/ic_favorite_border_black_24dp" />
+
+            <ImageView
+                android:id="@+id/btn_download"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/btn_add_to_list"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_toRightOf="@+id/btn_favourite"
+                android:src="@drawable/ic_file_download_black_24dp" />
+
+            <ImageView
+                android:id="@+id/btn_share"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/btn_add_to_list"
+                android:layout_marginLeft="@dimen/margin_medium_2"
+                android:layout_toRightOf="@+id/btn_download"
+                android:src="@drawable/ic_share_black_24dp" />
+
+            <TextView
+                android:id="@+id/tv_talks_detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/btn_add_to_list"
+                android:layout_below="@+id/btn_add_to_list"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:lineSpacingMultiplier="1.2"
+                android:text="Kumail Nanjiani opens the discussion with a dig at Google for not having chairs. That is kind of low rent of Google to not provide chairs to their employees."
+                android:textSize="@dimen/text_regular" />
+
+            <TextView
+                android:id="@+id/tv_talks_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/tv_talks_detail"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="@dimen/margin_small"
+                android:text="TED 2018,Filmed Apr 2018"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold|italic" />
+
+            <View
+                android:id="@+id/v_support_top_separator"
+                style="@style/AppTheme.DividerTheme"
+                android:layout_width="match_parent"
+                android:layout_below="@id/tv_talks_date"
+                android:layout_marginTop="@dimen/margin_medium_3" />
+
+            <TextView
+                android:id="@+id/tv_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v_support_top_separator"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="TED Talks are free thanks to support from"
+                android:textAlignment="center"
+                android:textSize="@dimen/text_smaller"
+                android:textStyle="italic" />
+
+            <View
+                android:id="@+id/v_support_middle_separator"
+                style="@style/AppTheme.DividerTheme"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/support_height"
+                android:layout_below="@id/tv_support"
+                android:layout_marginTop="@dimen/margin_medium" />
+
+            <View
+                android:id="@+id/v_support_bottom_separator"
+                style="@style/AppTheme.DividerTheme"
+                android:layout_width="match_parent"
+                android:layout_below="@id/v_support_middle_separator"
+                android:layout_marginTop="@dimen/margin_medium_3" />
+
+            <TextView
+                android:id="@+id/tv_speaker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v_support_bottom_separator"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="About the speaker"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <ImageView
+                android:id="@+id/iv_photo"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignLeft="@+id/tv_speaker"
+                android:layout_below="@+id/tv_speaker"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:src="@drawable/circle_profile" />
+
+            <TextView
+                android:id="@+id/tv_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/iv_photo"
+                android:layout_marginLeft="@dimen/margin_medium"
+                android:layout_toRightOf="@+id/iv_photo"
+                android:text="Tracee Ellis Ross"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_profile_job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_profile_name"
+                android:layout_below="@+id/tv_profile_name"
+                android:text="Actress, performance artist, motivational speaker"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_small" />
+
+            <TextView
+                android:id="@+id/tv_profile_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tv_profile_name"
+                android:layout_below="@+id/tv_profile_job"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:lineSpacingMultiplier="1.2"
+                android:text="Thomas Middleditch, Kumail Nanjiani, Amanda Crew, Zach Woods, and Martin Starr brought their true colors out for their stop by Talks at Google. they had the cast from HBO’s Silicon Valley up for a lively discussion on the show."
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular" />
+
+            <View
+                android:id="@+id/v_bottom_separator"
+                style="@style/AppTheme.DividerTheme"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/tv_profile_description"
+                android:layout_marginTop="@dimen/margin_medium_2" />
+
+            <TextView
+                android:id="@+id/tv_watch_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/v_bottom_separator"
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="Watch Next"
+                android:textColor="@color/primary_text"
+                android:textSize="@dimen/text_regular_3x" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_next_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tv_watch_next"
+                android:layout_marginTop="@dimen/margin_small" />
+        </RelativeLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_play"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/margin_medium_2"
+        android:src="@drawable/ic_play_arrow_white_24dp"
+        app:layout_anchor="@id/appbar"
+        app:layout_anchorGravity="bottom|right" />
+
+</android.support.design.widget.CoordinatorLayout>
