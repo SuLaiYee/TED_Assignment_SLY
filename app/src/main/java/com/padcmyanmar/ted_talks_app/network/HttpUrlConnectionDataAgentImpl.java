@@ -24,9 +24,11 @@ import java.util.List;
 public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
 
     private static HttpUrlConnectionDataAgentImpl objInstance;
+
     private HttpUrlConnectionDataAgentImpl() {
 
     }
+
     @Override
     public void loadTalkList(final int page, final String accessToken) {
         new AsyncTask<Void, Void, String>() {
@@ -95,41 +97,8 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
         }.execute();
     }
 
-    private String getQuery(List<NameValuePair> params) throws UnsupportedEncodingException {
-
-        StringBuilder stringBuilder = new StringBuilder();
-        boolean isFirst = true;
-
-
-        for (NameValuePair pair : params) {
-
-            if (isFirst) {
-
-                isFirst = false;
-
-            } else {
-
-                stringBuilder.append("&");
-            }
-
-            stringBuilder.append(URLEncoder.encode(pair.getName(), "UTF-8"));
-            stringBuilder.append("=");
-            stringBuilder.append(URLEncoder.encode(pair.getValue(), "UTF-8"));
-
-        }
-
-        return stringBuilder.toString();
-    }
-
-    public static HttpUrlConnectionDataAgentImpl getObjectReference() {
-
-        if (objInstance == null) {
-            objInstance = new HttpUrlConnectionDataAgentImpl();
-        }
-        return objInstance;
-    }
     @Override
-    public void loadTalkPlayList(final int page,final String accessToken) {
+    public void loadTalkPlayList(final int page, final String accessToken) {
         new AsyncTask<Void, Void, String>() {
 
             URL url;
@@ -169,7 +138,6 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
 
                         stringBuilder.append(lines + "\n");
                     }
-
                     String responseString = stringBuilder.toString();
                     return responseString;
 
@@ -258,4 +226,29 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
         }.execute();
 
     }
+
+    private String getQuery(List<NameValuePair> params) throws UnsupportedEncodingException {
+
+        StringBuilder stringBuilder = new StringBuilder();
+        boolean isFirst = true;
+        for (NameValuePair pair : params) {
+            if (isFirst) {
+                isFirst = false;
+            } else {
+                stringBuilder.append("&");
+            }
+            stringBuilder.append(URLEncoder.encode(pair.getName(), "UTF-8"));
+            stringBuilder.append("=");
+            stringBuilder.append(URLEncoder.encode(pair.getValue(), "UTF-8"));
+        }
+        return stringBuilder.toString();
+    }
+
+    public static HttpUrlConnectionDataAgentImpl getObjectReference() {
+        if (objInstance == null) {
+            objInstance = new HttpUrlConnectionDataAgentImpl();
+        }
+        return objInstance;
+    }
+
 }
