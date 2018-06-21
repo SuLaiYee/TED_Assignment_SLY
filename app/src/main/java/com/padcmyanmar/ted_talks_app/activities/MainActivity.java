@@ -10,6 +10,7 @@ import android.support.v7.widget.Toolbar;
 import com.padcmyanmar.ted_talks_app.R;
 import com.padcmyanmar.ted_talks_app.adapters.TalksAdapter;
 import com.padcmyanmar.ted_talks_app.data.models.TedTalksModel;
+import com.padcmyanmar.ted_talks_app.data.vos.TedTalksVO;
 import com.padcmyanmar.ted_talks_app.delegates.TalksDelegates;
 
 public class MainActivity extends BaseActivity implements TalksDelegates{
@@ -34,7 +35,7 @@ public class MainActivity extends BaseActivity implements TalksDelegates{
     }
 
     @Override
-    public void onTapTalks() {
+    public void onTapTalks(TedTalksVO talks) {
         Intent intent = new Intent(getApplicationContext(),TalksDetailsActivity.class);
         startActivity(intent);
     }
