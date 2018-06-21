@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity implements TalksDelegates{
     }
 
     @Override
-    public void onTapTalks(TedTalksVO talks) {
+    public void onTapTalks() {
         Intent intent = new Intent(getApplicationContext(),TalksDetailsActivity.class);
         startActivity(intent);
     }
