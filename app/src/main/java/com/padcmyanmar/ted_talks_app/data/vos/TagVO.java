@@ -1,8 +1,14 @@
 package com.padcmyanmar.ted_talks_app.data.vos;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TagVO {
+    @SerializedName("tag_id")
     private int tagId;
+    @SerializedName("tag")
     private String tag;
+    @SerializedName("description")
+    private String description;
 
     public int getTagId() {
         return tagId;
@@ -16,6 +22,5 @@ public class TagVO {
         return description;
     }
 
-    private String description;
 
 }

@@ -57,7 +57,7 @@
                 android:textSize="@dimen/text_regular" />
 
             <TextView
-                android:id="@+id/tv_talks_details_description"
+                android:id="@+id/tv_talks_details_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/tv_talker_detail_name"
@@ -69,7 +69,7 @@
                 android:id="@+id/ll_talks_detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_talks_details_description"
+                android:layout_below="@id/tv_talks_details_content"
                 android:layout_marginTop="@dimen/margin_small"
                 android:clickable="true"
                 android:foreground="@drawable/ripple"
@@ -205,7 +205,7 @@
                 android:textSize="@dimen/text_regular_3x" />
 
             <ImageView
-                android:id="@+id/iv_photo"
+                android:id="@+id/iv_profile"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_alignLeft="@+id/tv_speaker"
@@ -217,9 +217,9 @@
                 android:id="@+id/tv_profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@+id/iv_photo"
+                android:layout_alignTop="@+id/iv_profile"
                 android:layout_marginLeft="@dimen/margin_medium"
-                android:layout_toRightOf="@+id/iv_photo"
+                android:layout_toRightOf="@+id/iv_profile"
                 android:text="Tracee Ellis Ross"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_regular_2x"

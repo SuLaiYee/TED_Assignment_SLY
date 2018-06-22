@@ -3,10 +3,15 @@ package com.padcmyanmar.ted_talks_app.network;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.padcmyanmar.ted_talks_app.events.ApiErrorEvent;
+import com.padcmyanmar.ted_talks_app.events.SuccessGetTalksEvent;
+import com.padcmyanmar.ted_talks_app.network.responses.GetTalksResponse;
 import com.padcmyanmar.ted_talks_app.utils.TedTalksConstant;
 
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
+import org.greenrobot.eventbus.EventBus;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -91,7 +96,16 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
             @Override
             protected void onPostExecute(String responseString) {
                 super.onPostExecute(responseString);
-                if (responseString != null) {
+                Gson gson = new Gson();
+                GetTalksResponse talksResponse = gson.fromJson(responseString, GetTalksResponse.class);
+                //Log.d("onPostExecute", "onPostExecute: "+ talksResponse.getTalks().size());
+
+                if(talksResponse.isResponseOK()){
+                    SuccessGetTalksEvent event = new SuccessGetTalksEvent(talksResponse.getTalks());
+                    EventBus.getDefault().post(event);
+                }else{
+                    ApiErrorEvent errorEvent = new ApiErrorEvent(talksResponse.getMessage());
+                    EventBus.getDefault().post(errorEvent);
                 }
             }
         }.execute();
@@ -156,8 +170,8 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
             }
 
             @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
+            protected void onPostExecute(String responseString) {
+                super.onPostExecute(responseString);
             }
         }.execute();
 
@@ -220,8 +234,8 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
             }
 
             @Override
-            protected void onPostExecute(String s) {
-                super.onPostExecute(s);
+            protected void onPostExecute(String responseString) {
+                super.onPostExecute(responseString);
             }
         }.execute();
 
