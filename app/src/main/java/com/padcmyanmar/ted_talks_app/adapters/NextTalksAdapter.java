@@ -16,7 +16,7 @@ public class NextTalksAdapter extends RecyclerView.Adapter {
         LayoutInflater layoutInflater = LayoutInflater
                 .from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.viewholder_talks_detail_next
-                ,parent,false);
+                , parent, false);
 
         return new NextTalksViewHolder(view);
     }

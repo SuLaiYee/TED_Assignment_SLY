@@ -19,9 +19,10 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
-public class MainActivity extends BaseActivity implements TalksDelegates{
+public class MainActivity extends BaseActivity implements TalksDelegates {
 
     private TalksAdapter mTalksAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,38 +34,38 @@ public class MainActivity extends BaseActivity implements TalksDelegates{
         mTalksAdapter = new TalksAdapter(this);
         rvTalks.setAdapter(mTalksAdapter);
         rvTalks.setLayoutManager(new LinearLayoutManager(getApplicationContext()
-                ,LinearLayoutManager.VERTICAL,false));
+                , LinearLayoutManager.VERTICAL, false));
         TedTalksModel.getObjectReference().loadTalkList();
-//        TedTalksModel.getObjectReference().loadTalkPlayList();
-//        TedTalksModel.getObjectReference().loadTadPodCasts();
-
-
-
+//      TedTalksModel.getObjectReference().loadTalkPlayList();
+//      TedTalksModel.getObjectReference().loadTadPodCasts();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        if(!EventBus.getDefault().isRegistered(this)) {
             EventBus.getDefault().register(this);
-
+        }
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
+        if(EventBus.getDefault().isRegistered(this)) {
+            EventBus.getDefault().unregister(this);
+        }
     }
 
     @Override
     public void onTapTalks(TedTalksVO talks) {
-        Intent intent = new Intent(getApplicationContext(),TalksDetailsActivity.class);
-        intent.putExtra("TalkID",talks.getTalkId());
+        Intent intent = new Intent(getApplicationContext(), TalksDetailsActivity.class);
+        intent.putExtra("TalkID", talks.getTalkId());
         startActivity(intent);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onSuccessGetTalks(SuccessGetTalksEvent event){
-        Log.d("onSuccessGetTalks", "onSuccessGetTalks: "+event.getTalksList().size());
+    public void onSuccessGetTalks(SuccessGetTalksEvent event) {
+        Log.d("onSuccessGetTalks", "onSuccessGetTalks: " + event.getTalksList().size());
         mTalksAdapter.setTalksList(event.getTalksList());
     }
 

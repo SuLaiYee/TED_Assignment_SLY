@@ -100,10 +100,10 @@ public class HttpUrlConnectionDataAgentImpl implements TalksDataAgent {
                 GetTalksResponse talksResponse = gson.fromJson(responseString, GetTalksResponse.class);
                 //Log.d("onPostExecute", "onPostExecute: "+ talksResponse.getTalks().size());
 
-                if(talksResponse.isResponseOK()){
+                if (talksResponse.isResponseOK()) {
                     SuccessGetTalksEvent event = new SuccessGetTalksEvent(talksResponse.getTalks());
                     EventBus.getDefault().post(event);
-                }else{
+                } else {
                     ApiErrorEvent errorEvent = new ApiErrorEvent(talksResponse.getMessage());
                     EventBus.getDefault().post(errorEvent);
                 }

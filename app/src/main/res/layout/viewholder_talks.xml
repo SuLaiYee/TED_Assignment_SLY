@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/background_talker_height"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="@drawable/ripple"
     android:layout_marginLeft="@dimen/margin_medium"
     android:layout_marginRight="@dimen/margin_medium"
-    android:layout_marginTop="@dimen/margin_medium">
+    android:layout_marginTop="@dimen/margin_medium"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="@drawable/ripple">
 
     <ImageView
         android:id="@+id/iv_talks"
@@ -23,39 +22,40 @@
         android:id="@+id/tv_talker_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/tv_talks_content"
+        android:layout_marginLeft="@dimen/margin_medium_2"
         android:text="Talks at Google"
         android:textColor="@color/talks_brief_color"
-        android:layout_marginLeft="@dimen/margin_medium_2"
-        android:textSize="@dimen/text_regular"
-        android:layout_above="@+id/tv_talks_content"
-       />
+        android:textSize="@dimen/text_regular" />
 
     <TextView
         android:id="@+id/tv_talks_content"
         android:layout_width="@dimen/content_height"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_medium_2"
         android:layout_marginLeft="@dimen/margin_medium_2"
         android:text="Cast from HBO's Silicon Valley with Talks Details From America"
         android:textColor="@color/talks_brief_color"
-        android:textSize="@dimen/text_regular"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/margin_medium_2"
-        />
+        android:textSize="@dimen/text_regular" />
 
     <ImageView
         android:id="@+id/iv_dot"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/dot_height"
-        android:layout_below="@+id/tv_talker_name"
-        android:layout_toEndOf="@+id/tv_talks_content"
+        android:layout_above="@+id/tv_time"
+        android:layout_alignRight="@+id/tv_time"
+        android:layout_marginEnd="@dimen/margin_small"
         android:src="@drawable/ic_more_vert_black_32dp" />
 
     <TextView
         android:id="@+id/tv_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/iv_dot"
-        android:layout_toEndOf="@+id/tv_talks_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:layout_marginRight="@dimen/margin_medium_2"
         android:text="10:35"
         android:textColor="@color/toolbar_color" />
 

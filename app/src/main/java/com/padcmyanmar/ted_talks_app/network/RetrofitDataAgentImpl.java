@@ -18,12 +18,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitDataAgentImpl implements TalksDataAgent {
 
-    private  TalksApi mTalksApi;
+    private TalksApi mTalksApi;
 
-    private  static RetrofitDataAgentImpl objectReference;
+    private static RetrofitDataAgentImpl objectReference;
 
-    private RetrofitDataAgentImpl(){
-      final OkHttpClient okHttpClient = new OkHttpClient.Builder()
+    private RetrofitDataAgentImpl() {
+        final OkHttpClient okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(15, TimeUnit.SECONDS)
                 .readTimeout(15, TimeUnit.SECONDS)
                 .writeTimeout(15, TimeUnit.SECONDS)

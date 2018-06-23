@@ -19,9 +19,13 @@ import com.padcmyanmar.ted_talks_app.R;
 import com.padcmyanmar.ted_talks_app.adapters.NextTalksAdapter;
 import com.padcmyanmar.ted_talks_app.data.models.TedTalksModel;
 import com.padcmyanmar.ted_talks_app.data.vos.TedTalksVO;
+import com.padcmyanmar.ted_talks_app.utils.MilliSecToMinSec;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
@@ -34,20 +38,25 @@ public class TalksDetailsActivity extends BaseActivity {
 
     @BindView(R.id.tv_talker_detail_name)
     TextView tvTalkerName;
+
     @BindView(R.id.tv_talks_details_content)
     TextView tvTalksContent;
+
     @BindView(R.id.tv_time)
     TextView tvTalksTime;
+
     @BindView(R.id.tv_talks_detail)
     TextView tvTalksDetails;
-    //    @BindView(R.id.tv_speaker)
-//    TextView tvPoster;
+
     @BindView(R.id.iv_profile)
     ImageView ivProfile;
+
     @BindView(R.id.tv_profile_name)
     TextView tvTalkerProfileName;
+
     @BindView(R.id.tv_profile_job)
     TextView tvTalkerJob;
+
     @BindView(R.id.tv_profile_description)
     TextView tvTalkerDescription;
 
@@ -79,24 +88,16 @@ public class TalksDetailsActivity extends BaseActivity {
 
         tvTalkerName.setText(talks.getSpeaker().getName());
         tvTalksContent.setText(talks.getTitle());
-        //String time = Util.getHourMinuteSecond(Double.parseDouble(String.valueOf(tedTalks.getTalkDurationSecs())));
 
-        Long milliseconds = Long.valueOf(talks.getDurationInSecs());
-        Log.d("MM", "MM"+ milliseconds);
-        long hour = TimeUnit.MILLISECONDS.toHours(milliseconds);
-        long minute = TimeUnit.MILLISECONDS.toMinutes(milliseconds) - TimeUnit.HOURS.toMinutes(
-                        TimeUnit.MILLISECONDS.toHours(milliseconds));
-        long sec = TimeUnit.MILLISECONDS.toSeconds(milliseconds) - TimeUnit.MINUTES.toSeconds(
-                        TimeUnit.MILLISECONDS.toMinutes(milliseconds));
-        tvTalksTime.setText(hour+" : "+minute+" : "+ sec);
+        String dateFormatted = MilliSecToMinSec.getHourMinuteSecond(Long.parseLong(String.valueOf(talks.getDurationInSecs())));
+
+        tvTalksTime.setText(dateFormatted);
         tvTalksDetails.setText(talks.getDescription());
-        //tv.setVisibility(View.GONE);
         tvTalkerProfileName.setText(talks.getSpeaker().getName());
         tvTalkerJob.setVisibility(View.INVISIBLE);
         tvTalkerDescription.setVisibility(View.GONE);
 
-
-        // To do image
+        // To read image
         Glide.with(ivTalksMainDetail.getContext())
                 .load(talks.getImageUrl()) // Remote URL of image.
                 .into(ivTalksMainDetail);

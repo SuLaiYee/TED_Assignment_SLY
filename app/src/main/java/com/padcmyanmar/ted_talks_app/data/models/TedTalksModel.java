@@ -54,8 +54,6 @@ public class TedTalksModel {
         mTedTalkDataAgent.loadTalkPodCasts(1, DUMMY_ACCESS_TOKEN);
     }
 
-
-
     public TedTalksVO getTedTalksById(String talkId) {
 
         return mTedTalksMap.get(talkId);

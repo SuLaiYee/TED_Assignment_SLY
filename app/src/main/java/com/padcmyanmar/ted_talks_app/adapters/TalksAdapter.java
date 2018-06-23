@@ -15,13 +15,13 @@ import com.padcmyanmar.ted_talks_app.viewholders.TalksViewHolder;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TalksAdapter extends RecyclerView.Adapter<TalksViewHolder>{
+public class TalksAdapter extends RecyclerView.Adapter<TalksViewHolder> {
 
     private TalksDelegates mTalksDelegate;
 
     private List<TedTalksVO> mTalksList;
 
-    public TalksAdapter(TalksDelegates talksDelegate){
+    public TalksAdapter(TalksDelegates talksDelegate) {
         mTalksDelegate = talksDelegate;
         mTalksList = new ArrayList<>();
     }
@@ -30,8 +30,8 @@ public class TalksAdapter extends RecyclerView.Adapter<TalksViewHolder>{
     @Override
     public TalksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.viewholder_talks, parent,false);
-        return new TalksViewHolder(view,mTalksDelegate);
+        View view = inflater.inflate(R.layout.viewholder_talks, parent, false);
+        return new TalksViewHolder(view, mTalksDelegate);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class TalksAdapter extends RecyclerView.Adapter<TalksViewHolder>{
         return mTalksList.size();
     }
 
-    public void setTalksList(List<TedTalksVO> talksList){
+    public void setTalksList(List<TedTalksVO> talksList) {
         mTalksList = talksList;
         notifyDataSetChanged();
     }

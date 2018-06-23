@@ -7,12 +7,16 @@ import java.util.List;
 public class TedPodCastsVO {
     @SerializedName("podcast_id")
     private int podCastId;
+
     @SerializedName("title")
     private String podCastTitle;
+
     @SerializedName( "imageUrl")
     private String imageUrl;
+
     @SerializedName( "description")
     private String description;
+
     @SerializedName("segments")
     private List<SegmentsVO> segments;
 

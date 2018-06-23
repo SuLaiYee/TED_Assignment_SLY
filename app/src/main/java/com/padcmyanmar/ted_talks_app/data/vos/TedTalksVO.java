@@ -7,16 +7,22 @@ import java.util.List;
 public class TedTalksVO {
     @SerializedName("talk_id")
     private String talkId;
+
     @SerializedName("title")
     private String title;
+
     @SerializedName("speaker")
     private SpeakerVO speaker;
+
     @SerializedName("imageUrl")
     private String imageUrl;
+
     @SerializedName("durationInSec")
     private int durationInSecs;
+
     @SerializedName("description")
     private String description;
+
     @SerializedName("tag")
     private List<TagVO> tags;
 

@@ -7,17 +7,21 @@ import java.util.List;
 public class TedPlayListsVO {
     @SerializedName("playlist_id")
     private int playlistId;
+
     @SerializedName("title")
     private String title;
+
     @SerializedName("imageUrl")
     private String imageUrl;
+
     @SerializedName("totalTalks")
     private int totalTalks;
+
     @SerializedName("description")
     private String description;
+
     @SerializedName("talksInPlaylist")
     private List<TedTalksVO> talksInPlayList;
-
 
     public int getPlaylistId() {
         return playlistId;

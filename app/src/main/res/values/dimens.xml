@@ -40,5 +40,5 @@
     <dimen name="dot_height">20dp</dimen>
     <dimen name="collapsing_toolbar_height">220dp</dimen>
     <dimen name="support_height">40dp</dimen>
-    <dimen name="content_height">310dp</dimen>
+    <dimen name="content_height">250dp</dimen>
     </resources>
